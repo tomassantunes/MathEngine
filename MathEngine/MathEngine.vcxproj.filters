@@ -21,9 +21,15 @@
     <ClCompile Include="src\Vector3\Vector3n.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Matrix\Matrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Vector3\Vector3n.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Matrix\Matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

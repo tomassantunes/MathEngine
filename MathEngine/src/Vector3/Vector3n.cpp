@@ -1,7 +1,7 @@
 #include "Vector3n.h"
 #include <math.h>
 
-namespace V3 
+namespace ME 
 {
 	Vector3n::Vector3n() :x(0.0), y(0.0), z(0.0) {}; // defines the vector coords as 0 bc no arguments given
 

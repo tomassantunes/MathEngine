@@ -140,9 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MathEngine.cpp" />
+    <ClCompile Include="src\Matrix\Matrix.cpp" />
     <ClCompile Include="src\Vector3\Vector3n.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Matrix\Matrix.h" />
     <ClInclude Include="src\Vector3\Vector3n.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
