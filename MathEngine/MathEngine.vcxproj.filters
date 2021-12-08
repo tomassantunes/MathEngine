@@ -18,12 +18,12 @@
     <ClCompile Include="MathEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Vector3n.cpp">
+    <ClCompile Include="src\Vector3\Vector3n.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Vector3n.h">
+    <ClInclude Include="src\Vector3\Vector3n.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
