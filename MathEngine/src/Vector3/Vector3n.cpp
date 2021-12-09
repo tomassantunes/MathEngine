@@ -1,5 +1,8 @@
 #include "Vector3n.h"
+#include <iostream>
 #include <math.h>
+
+#define getName(var)  #var
 
 namespace ME 
 {
@@ -8,6 +11,11 @@ namespace ME
 	Vector3n::Vector3n(float X, float Y, float Z) :x(X), y(Y), z(Z) {};
 
 	Vector3n::~Vector3n() {}
+
+	void Vector3n::show() 
+	{
+		std::cout << x << " " << y << " " << z << std::endl;
+	}
 
 	Vector3n::Vector3n(const Vector3n& v) :x(v.x), y(v.y), z(v.z) {};
 

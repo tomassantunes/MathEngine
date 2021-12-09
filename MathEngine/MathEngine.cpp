@@ -4,7 +4,7 @@
 #include "src/Matrix/Matrix.h"
 
 // Vectors stuff
-void vectorsTest() 
+void vectorsTest()
 {
 	ME::Vector3n vector(1, 2, 3);
 	ME::Vector3n vector1(0, 0, 0);
@@ -13,43 +13,63 @@ void vectorsTest()
 	ME::Vector3n vector4(1, 3, 2);
 	ME::Vector3n vector5(9, 10, 2);
 
-	std::cout << "vector: " << vector.x << " " << vector.y << " " << vector.z << std::endl;
-	std::cout << "vector1: " << vector1.x << " " << vector1.y << " " << vector1.z << std::endl;
-	std::cout << "vector2: " << vector2.x << " " << vector2.y << " " << vector2.z << std::endl;
-	std::cout << "vector3: " << vector3.x << " " << vector3.y << " " << vector3.z << std::endl;
-	std::cout << "vector4: " << vector4.x << " " << vector4.y << " " << vector4.z << std::endl;
-	std::cout << "vector5: " << vector5.x << " " << vector5.y << " " << vector5.z << std::endl;
+	std::cout << "vector: ";
+	vector.show();
+
+	std::cout << "vector1: ";
+	vector1.show();
+
+	std::cout << "vector2: ";
+	vector2.show();
+
+	std::cout << "vector3: ";
+	vector3.show();
+
+	std::cout << "vector4: ";
+	vector4.show();
+
+	std::cout << "vector5: ";
+	vector5.show();
 
 	// test vector operands
 	// sum and subtraction tests
 	ME::Vector3n result = vector + vector2;
 
-	std::cout << "Result of sum of vectors: " << result.x << " " << result.y << " " << result.z << std::endl;
+	std::cout << "Result of sum of vectors: ";
+	result.show();
 
 	vector3 += vector4;
-	std::cout << "vector3 after sum with vector4: " << vector3.x << " " << vector3.y << " " << vector3.z << std::endl;
+	std::cout << "vector3 after sum with vector4: ";
+	vector3.show();
 
 	ME::Vector3n resultReset = result - vector2;
-	std::cout << "Result of subtraction of vectors: " << resultReset.x << " " << resultReset.y << " " << resultReset.z << std::endl;
+	std::cout << "Result of subtraction of vectors: ";
+	resultReset.show();
 
 	vector3 -= vector4;
-	std::cout << "vector3 after subtraction with vector4: " << vector3.x << " " << vector3.y << " " << vector3.z << std::endl;
+	std::cout << "vector3 after subtraction with vector4: ";
+	vector3.show();
 
 	vector1 -= vector2;
-	std::cout << "vector1 after subtraction with vector2: " << vector1.x << " " << vector1.y << " " << vector1.z << std::endl;
+	std::cout << "vector1 after subtraction with vector2: ";
+	vector1.show();
 
 	// multiplication and division by scalar tests
 	vector *= 2;
-	std::cout << "vector multiplied by 2: " << vector.x << " " << vector.y << " " << vector.z << std::endl;
+	std::cout << "vector multiplied by 2: ";
+	vector.show();
 
 	ME::Vector3n multiplied = vector2 * 5;
-	std::cout << "result of vector2 multiplied by 5: " << multiplied.x << " " << multiplied.y << " " << multiplied.z << std::endl;
+	std::cout << "result of vector2 multiplied by 5: ";
+	multiplied.show();
 
 	vector /= 3;
-	std::cout << "vector divided by 3: " << vector.x << " " << vector.y << " " << vector.z << std::endl;
+	std::cout << "vector divided by 3: ";
+	vector.show();
 
 	ME::Vector3n divided = vector2 / 2;
-	std::cout << "result of vector2 divided by 2: " << divided.x << " " << divided.y << " " << divided.z << std::endl;
+	std::cout << "result of vector2 divided by 2: ";
+	divided.show();
 
 	// vector product
 	float dotProduct = vector.dot(vector2);
@@ -60,13 +80,16 @@ void vectorsTest()
 
 	// cross product
 	ME::Vector3n crossProduct = vector.cross(vector2);
-	std::cout << "Cross product of vector with vector2: " << crossProduct.x << " " << crossProduct.y << " " << crossProduct.z << std::endl;
+	std::cout << "Cross product of vector with vector2: ";
+	crossProduct.show();
 
 	ME::Vector3n crossProductMod = vector3 % vector4;
-	std::cout << "Cross product of vector3 with vector4: " << crossProductMod.x << " " << crossProductMod.y << " " << crossProductMod.z << std::endl;
+	std::cout << "Cross product of vector3 with vector4: ";
+	crossProductMod.show();
 
 	vector5 %= crossProductMod;
-	std::cout << "Cross product of vector5 with crossProductMod: " << vector5.x << " " << vector5.y << " " << vector5.z << std::endl;
+	std::cout << "Cross product of vector5 with crossProductMod: ";
+	vector5.show();
 
 	// magnitude of a vector
 	float magnitude = vector5.magnitude();
@@ -74,11 +97,12 @@ void vectorsTest()
 
 	// convert to unit vector
 	vector5.normalize();
-	std::cout << "unit vector of vector5: " << vector5.x << " " << vector5.y << " " << vector5.z << std::endl;
+	std::cout << "unit vector of vector5: ";
+	vector5.show();
 }
 
 // Matrixes stuff
-void matrixTest() 
+void matrixTest()
 {
 	ME::Matrix m(
 		1, 2, 3,
@@ -100,6 +124,13 @@ void matrixTest()
 		25, 26, 27
 	);
 	o.show();
+
+	ME::Matrix p(
+		0, 0, 0,
+		0, 0, -1,
+		0, 1, 0
+	);
+	p.show();
 
 	// test addition
 	std::cout << "result of m + n: " << std::endl;
@@ -131,8 +162,22 @@ void matrixTest()
 	std::cout << "result of inverting m: " << std::endl;
 	ME::Matrix resultInversion = m.getInverseOfMatrix();
 	resultInversion.show();
+
+	// test transpose matrix
+	std::cout << "result of transposing m: " << std::endl;
+	ME::Matrix resultTranspose = m.getTransposeOfMatrix();
+	resultTranspose.show();
+
+	// test vector transformation
+	ME::Vector3n v(0, -1, 2);
+	std::cout << "result of vector transformation of p * v: " << std::endl;
+	ME::Vector3n resultVectorTrans = p * v;
+	resultVectorTrans.show();
+
 }
+
 int main(int argc, const char* argv[])
 {
-	matrixTest();
+	//vectorsTest();
+	//matrixTest();
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Vector3/Vector3n.h"
+
 // 3x3 matrix - column major.X vector is 0, 1, 2, etc. (openGL prefer way)
 //    0    3    6
 //    1    4    7
@@ -43,5 +45,13 @@ namespace ME {
 		void setMatrixAsInvertedMatrix(const Matrix& m);
 		Matrix getInverseOfMatrix() const;
 		void invertMatrix();
+
+		// transpose matrix
+		void setMatrixAsTransposedMatrix(const Matrix& m);
+		Matrix getTransposeOfMatrix() const;
+
+		// vector transformation
+		Vector3n operator * (const Vector3n& v) const;
+		Vector3n transformVectorByMatrix(const Vector3n& v) const;
 	};
 }

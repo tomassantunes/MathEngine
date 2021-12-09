@@ -1,4 +1,5 @@
 #include "Matrix.h"
+#include "../Vector3/Vector3n.h"
 #include <iostream>
 
 int MATRIX_MAX_SIZE = 9;
@@ -238,5 +239,47 @@ namespace ME
 	void Matrix::invertMatrix()
 	{
 		setMatrixAsInvertedMatrix(*this);
+	}
+
+	// transpose matrix
+	void Matrix::setMatrixAsTransposedMatrix(const Matrix& m) 
+	{
+		//    0    3    6   ->   0    1    2
+		//    1    4    7        3    4    5
+		//    2    5    8        6    7    8
+
+		matrixData[0] = m.matrixData[0];
+		matrixData[3] = m.matrixData[1];
+		matrixData[6] = m.matrixData[2];
+
+		matrixData[1] = m.matrixData[3];
+		matrixData[4] = m.matrixData[4];
+		matrixData[7] = m.matrixData[5];
+
+		matrixData[2] = m.matrixData[6];
+		matrixData[5] = m.matrixData[7];
+		matrixData[8] = m.matrixData[8];
+	}
+	
+	Matrix Matrix::getTransposeOfMatrix() const
+	{
+		Matrix result;
+		result.setMatrixAsTransposedMatrix(*this);
+		return result;
+	}
+
+	// vector transformation
+	Vector3n Matrix::operator * (const Vector3n& v) const
+	{
+		return Vector3n(
+			matrixData[0] * v.x + matrixData[3] * v.y + matrixData[6] * v.z,
+			matrixData[1] * v.x + matrixData[4] * v.y + matrixData[7] * v.z,
+			matrixData[2] * v.x + matrixData[5] * v.y + matrixData[8] * v.z
+		);
+	}
+
+	Vector3n Matrix::transformVectorByMatrix(const Vector3n& v) const
+	{
+		return (*this) * v;
 	}
 }

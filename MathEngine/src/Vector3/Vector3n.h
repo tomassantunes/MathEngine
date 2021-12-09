@@ -14,6 +14,8 @@ namespace ME
 
 		~Vector3n();
 
+		void show();
+
 		Vector3n(const Vector3n& v);
 		Vector3n& operator = (const Vector3n& v);
 		
