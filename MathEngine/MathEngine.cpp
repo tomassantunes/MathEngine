@@ -128,7 +128,9 @@ void matrixTest()
 	resultIdentity.show();
 
 	// test invert matrix
-
+	std::cout << "result of inverting m: " << std::endl;
+	ME::Matrix resultInversion = m.getInverseOfMatrix();
+	resultInversion.show();
 }
 int main(int argc, const char* argv[])
 {

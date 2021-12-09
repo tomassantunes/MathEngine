@@ -184,16 +184,59 @@ namespace ME
 		//determinante
 		// (0 * 4 * 8) + (1 * 5 * 6) + (2 * 3 * 7) - (6 * 4 * 2) - (7 * 5 * 0) - (8 * 3 * 1)
 
+		//float det = (t1 * m.matrixData[8] - t2 * m.matrixData[5] - t3 * m.matrixData[8] + t4 * m.matrixData[5] + t5 * m.matrixData[7] - t6 * m.matrixData[4]);
 
+		float t1 = m.matrixData[0] * m.matrixData[4] * m.matrixData[8];
+		float t2 = m.matrixData[1] * m.matrixData[5] * m.matrixData[6];
+		float t3 = m.matrixData[2] * m.matrixData[3] * m.matrixData[7];
+		float t4 = m.matrixData[6] * m.matrixData[4] * m.matrixData[2];
+		float t5 = m.matrixData[7] * m.matrixData[5] * m.matrixData[0];
+		float t6 = m.matrixData[8] * m.matrixData[3] * m.matrixData[1];
+
+		float det = t1 + t2 + t3 - t4 - t5 - t6;
+
+		if (det == 0.0) 
+		{
+			std::cout << "The determinant is equal to 0, then there is no inverted matrix." << std::endl;
+			return;
+		}
+
+		float invD = 1.0f / det;
+
+		float a = (m.matrixData[4] * m.matrixData[8] - m.matrixData[7] * m.matrixData[5]) * invD;
+		float b = -(m.matrixData[1] * m.matrixData[8] - m.matrixData[7] * m.matrixData[2]) * invD;
+		float c = (m.matrixData[1] * m.matrixData[5] - m.matrixData[2] * m.matrixData[4]) * invD;
+
+		float d = -(m.matrixData[3] * m.matrixData[8] - m.matrixData[5] * m.matrixData[6]) * invD;
+		float e = (m.matrixData[0] * m.matrixData[8] - m.matrixData[6] * m.matrixData[2]) * invD;
+		float f = -(m.matrixData[0] * m.matrixData[5] - m.matrixData[3] * m.matrixData[2]) * invD;
+
+		float g = (m.matrixData[3] * m.matrixData[7] - m.matrixData[6] * m.matrixData[4]) * invD;
+		float h = -(m.matrixData[0] * m.matrixData[7] - m.matrixData[6] * m.matrixData[1]) * invD;
+		float i = (m.matrixData[0] * m.matrixData[4] - m.matrixData[1] * m.matrixData[3]) * invD;
+
+		matrixData[0] = a;
+		matrixData[1] = b;
+		matrixData[2] = c;
+
+		matrixData[3] = d;
+		matrixData[4] = e;
+		matrixData[5] = f;
+
+		matrixData[6] = g;
+		matrixData[7] = h;
+		matrixData[8] = i;
 	}
 
-	Matrix Matrix::getInverseOfMatrix(const Matrix& m) const
+	Matrix Matrix::getInverseOfMatrix() const
 	{
-	
+		Matrix result;
+		result.setMatrixAsInvertedMatrix(*this);
+		return result;
 	}
 
 	void Matrix::invertMatrix()
 	{
-
+		setMatrixAsInvertedMatrix(*this);
 	}
 }

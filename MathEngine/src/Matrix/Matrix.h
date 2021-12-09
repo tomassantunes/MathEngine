@@ -41,7 +41,7 @@ namespace ME {
 
 		// invert matrix
 		void setMatrixAsInvertedMatrix(const Matrix& m);
-		Matrix getInverseOfMatrix(const Matrix& m) const;
+		Matrix getInverseOfMatrix() const;
 		void invertMatrix();
 	};
 }
