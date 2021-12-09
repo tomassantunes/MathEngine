@@ -22,11 +22,11 @@ namespace ME {
 
 		Matrix& operator = (const Matrix& value);
 		
-		// add matrixes
+		// add matrices
 		Matrix& operator + (const Matrix &v) const;
 		void operator += (const Matrix &v);
 
-		// subtract matrixes
+		// subtract matrices
 		Matrix& operator - (const Matrix& v) const;
 		void operator -= (const Matrix& v);
 
@@ -34,7 +34,7 @@ namespace ME {
 		Matrix& operator * (const float s) const;
 		void operator *= (const float s);
 
-		// multiply matrixes
+		// multiply matrices
 		Matrix operator * (const Matrix& v) const;
 		void operator *= (const Matrix& v);
 

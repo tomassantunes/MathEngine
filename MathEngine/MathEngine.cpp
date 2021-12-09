@@ -2,6 +2,7 @@
 #include <string>
 #include "src/Vector3/Vector3n.h"
 #include "src/Matrix/Matrix.h"
+#include "src/Quaternion/Quaternion.h"
 
 // Vectors stuff
 void vectorsTest()
@@ -101,7 +102,7 @@ void vectorsTest()
 	vector5.show();
 }
 
-// Matrixes stuff
+// Matrices stuff
 void matrixTest()
 {
 	ME::Matrix m(
@@ -147,7 +148,7 @@ void matrixTest()
 	ME::Matrix resultMultSca = m * 2;
 	resultMultSca.show();
 
-	// test multiplication of matrixes
+	// test multiplication of matrices
 	std::cout << "result of m * n: " << std::endl;
 	ME::Matrix resultMult = m * n;
 	resultMult.show();
@@ -176,8 +177,74 @@ void matrixTest()
 
 }
 
+// Quaternions stuff
+void quaternionsTest() 
+{
+	ME::Vector3n a(0, 1, 0);
+	ME::Quaternion aQ(180, a);
+	aQ.show();
+
+	ME::Vector3n b(4, 2, 0);
+	ME::Quaternion bQ(45, b);
+	bQ.show();
+
+	ME::Vector3n c(7, 3, 5);
+	ME::Quaternion cQ(480, c);
+	cQ.show();
+
+	ME::Vector3n d(1, 2, 1);
+	ME::Quaternion dQ(10, c);
+	dQ.show();
+
+	// test addition
+	std::cout << "Addition of a and b: ";
+	ME::Quaternion addResult = aQ + bQ;
+	addResult.show();
+
+	// test subtraction
+	std::cout << "Subtraction of a and c: ";
+	ME::Quaternion subResult = aQ - cQ;
+	subResult.show();
+
+	// test multiplication
+	std::cout << "Multiplication of a and b: ";
+	ME::Quaternion mulResult = aQ * bQ;
+	mulResult.show();
+
+	// test scalar multiplication
+	std::cout << "Multiplication of c by 2: ";
+	ME::Quaternion mulScalResult = cQ * 2;
+	mulScalResult.show();
+
+	// test norm of quaternion
+	float normB = bQ.norm();
+	std::cout << "Norm of b: " << normB << std::endl;
+
+	// test unit norm of quaternion
+	std::cout << "Unit norm of d: ";
+	dQ.normalize();
+	dQ.show();
+
+	// test conjugation of quaternions
+	std::cout << "Conjugate of c: ";
+	ME::Quaternion cConjugateResult = cQ.conjugate();
+	cConjugateResult.show();
+
+	// test inversion of quaternions
+	std::cout << "Inverse of b: ";
+	ME::Quaternion bInverseResult = bQ.inverse();
+	bInverseResult.show();
+
+	// test rotating a vector
+	ME::Vector3n axis(1, 0, 0);
+	std::cout << "Rotated vector of b by 90 degrees and x axis: ";
+	ME::Vector3n rotateResult = bQ.rotateVector(90, axis);
+	rotateResult.show();
+}
+
 int main(int argc, const char* argv[])
 {
 	//vectorsTest();
 	//matrixTest();
+	//quaternionsTest();
 }

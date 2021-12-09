@@ -52,7 +52,7 @@ namespace ME
 		return *this;
 	}
 
-	// add matrixes
+	// add matrices
 	Matrix& Matrix::operator + (const Matrix &v) const
 	{
 		Matrix m;
@@ -73,7 +73,7 @@ namespace ME
 		}
 	}
 
-	// subtract matrixes
+	// subtract matrices
 	Matrix& Matrix::operator - (const Matrix& v) const
 	{
 		Matrix m;
@@ -115,7 +115,7 @@ namespace ME
 		}
 	}
 
-	// multiply matrixes
+	// multiply matrices
 	Matrix Matrix::operator * (const Matrix& m) const 
 	{
 		return Matrix(matrixData[0] * m.matrixData[0] + matrixData[3] * m.matrixData[1] + matrixData[6] * m.matrixData[2],
